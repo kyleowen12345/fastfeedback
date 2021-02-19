@@ -1,3 +1,4 @@
+
 import { AuthProvider } from "@/lib/auth"
 import { ChakraProvider } from "@chakra-ui/react"
 import {Global,css} from '@emotion/react'
@@ -25,6 +26,7 @@ const GlobalStyle = ({ children }) => {
   );
 };
 
+
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider  theme={customTheme}>
@@ -35,6 +37,28 @@ function MyApp({ Component, pageProps }) {
   </ChakraProvider >
   )
   
+
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <ChakraProvider  theme={customTheme}>
+  <AuthProvider>
+    <GlobalStyle/>
+    <Component {...pageProps}/>
+  </AuthProvider>
+  </ChakraProvider >
+  )
+  
+
+import { AuthProvider } from "../lib/auth"
+
+
+function MyApp({ Component, pageProps }) {
+  return <AuthProvider>
+    <Component {...pageProps}/>
+  </AuthProvider>
+
+
 }
 
 export default MyApp
