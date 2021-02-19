@@ -1,3 +1,4 @@
+
 import { AuthProvider } from "@/lib/auth"
 import { ChakraProvider } from "@chakra-ui/react"
 import {Global,css} from '@emotion/react'
@@ -35,6 +36,15 @@ function MyApp({ Component, pageProps }) {
   </ChakraProvider >
   )
   
+
+import { AuthProvider } from "../lib/auth"
+
+
+function MyApp({ Component, pageProps }) {
+  return <AuthProvider>
+    <Component {...pageProps}/>
+  </AuthProvider>
+
 }
 
 export default MyApp
