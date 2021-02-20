@@ -27,12 +27,12 @@ const GlobalStyle = ({ children }) => {
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ChakraProvider  theme={customTheme}>
-  <AuthProvider>
+    <AuthProvider>
+    <ChakraProvider  theme={customTheme} resetCSS>
     <GlobalStyle/>
     <Component {...pageProps}/>
-  </AuthProvider>
   </ChakraProvider >
+  </AuthProvider>
   )
   
 }
