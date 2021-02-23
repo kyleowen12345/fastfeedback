@@ -14,6 +14,7 @@ import {
 import {GoogleIcon} from '@/styles/theme'
 import { useAuth } from '@/lib/auth'
 import AddSiteModal from './AddSiteModal'
+import NextLink from 'next/link'
 const DashboardShell = ({children}) => {
    const {user,signout}=useAuth()
    return <Flex flexDirection="column">
@@ -25,7 +26,7 @@ const DashboardShell = ({children}) => {
       >
         <Stack spacing={4} isInline alignItems="center">
         <Icon as={GoogleIcon} w="10" h="10" />
-          <Link>Sites</Link>
+         <NextLink href="/">Sites</NextLink>
           <Link>FeedBack</Link>
         </Stack>
         <Flex justifyContent="center" alignItems="center">

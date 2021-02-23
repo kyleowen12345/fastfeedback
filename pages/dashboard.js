@@ -10,7 +10,8 @@ import SiteTable from '@/components/SiteTable'
 
 export default function Dashboard() {
   const auth=useAuth()
-  const { data, error,isValidating } = useSWR('/api/sites', fetcher)
+  console.log(auth?.user)
+  const { data, error,isValidating } = useSWR('/api/sites', fetcher,{revalidateOnFocus:false,})
   if(isValidating){
       return <DashboardShell><SiteTableSkeleton/></DashboardShell> 
   }if(!data){

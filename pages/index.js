@@ -6,7 +6,9 @@ import Link from 'next/link'
 
 
 
+
 export default function Home() {
+
   const auth=useAuth()
   return (
     <Flex as="main" direction="column" align="center" justify="center" h="100vh">
@@ -41,7 +43,6 @@ export default function Home() {
          bg: 'gray.800',
          transform: 'scale(0.95)'
        }} onClick={(e)=>auth.signinWithGithub()}>Sign In</Button>}
-    
        </Flex>
   )
 }
