@@ -9,12 +9,12 @@ import SiteTable from '@/components/SiteTable'
 
 
 export default function Dashboard() {
-  const auth=useAuth()
-  console.log(auth?.user)
-  const { data, error,isValidating } = useSWR('/api/sites', fetcher,{revalidateOnFocus:false,})
+  const {user}=useAuth()
+  const { data, error,isValidating } = useSWR(user ? ['/api/sites',user?.token]:null, fetcher,{revalidateOnFocus:false,})
+ console.log(error)
   if(isValidating){
       return <DashboardShell><SiteTableSkeleton/></DashboardShell> 
-  }if(!data){
+  }if(!data || error || data.message){
  return  <DashboardShell><EmptyState/></DashboardShell>
   }else{
     return <DashboardShell><SiteTable sites={data}/></DashboardShell>

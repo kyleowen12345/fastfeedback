@@ -8,7 +8,7 @@ export default async(req, res) => {
    const feedback= await getAllFeedback(siteId)
    res.status(200).json(feedback)
   } catch (error) {
-    console.log('Error getting document',error)
+    res.status(500).json({error})
   }
  
 

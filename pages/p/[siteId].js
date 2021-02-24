@@ -14,6 +14,7 @@ export async function getStaticProps({params}) {
           initialFeedback:feedback,
            
       }, 
+      revalidate: 1
     }
   }
   export async function getStaticPaths() {

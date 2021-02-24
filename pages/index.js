@@ -10,9 +10,19 @@ import Link from 'next/link'
 export default function Home() {
 
   const auth=useAuth()
+  console.log(auth?.user)
   return (
     <Flex as="main" direction="column" align="center" justify="center" h="100vh">
        <Head>
+       <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (document.cookie && document.cookie.includes('fast-feedback-auth')) {
+                window.location.href = "/dashboard"
+              }
+            `
+          }}
+        />
         <title>FastFeedBack</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
