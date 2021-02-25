@@ -31,7 +31,7 @@ const AddSiteModal=({children})=> {
       site,
       link
       }
-  createSites(newSite)
+const {id}=createSites(newSite)
   toast({
     title: "Success",
     description: "We've added your site",
@@ -40,7 +40,7 @@ const AddSiteModal=({children})=> {
     isClosable: true,
   })
   mutate(user ? ['/api/sites',user?.token]:null,async (data)=>{
-    return [...data,newSite]
+    return [...data,{id,...newSite}]
   },false)
   onClose()
     }

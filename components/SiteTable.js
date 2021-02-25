@@ -8,7 +8,7 @@ import { Table, Tr, Th, Td } from './Table';
 
 const SiteTable = ({ sites }) => {
   return (
-    <Box overflowX="scroll">
+    <Box >
       <Table w="full">
         <thead>
           <Tr>
@@ -21,7 +21,7 @@ const SiteTable = ({ sites }) => {
         </thead>
         <tbody>
           {sites?.map((site, index) => (
-            <Box as="tr" key={site?.site}>
+            <Box as="tr" key={site?.id}>
               <Td>
                 <NextLink
                   href="/site/[siteId]"
