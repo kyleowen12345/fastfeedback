@@ -10,13 +10,16 @@ const GlobalStyle = ({ children }) => {
       </Head> */}
       <Global
         styles={css`
-          html {
+          body{
+            background-color: #EDF2F7;
             scroll-behavior: smooth;
+            
           }
           #__next {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+           
           }
         `}
       />

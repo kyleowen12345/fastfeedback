@@ -6,6 +6,7 @@ import DashboardShell from '@/components/DashboardShell'
 import useSWR from 'swr'
 import fetcher from '@/utils/fetcher'
 import SiteTable from '@/components/SiteTable'
+import SiteTableHeader from '@/components/SiteTableHeader'
 
 
 export default function Dashboard() {
@@ -13,11 +14,11 @@ export default function Dashboard() {
   const { data, error,isValidating } = useSWR(user ? ['/api/sites',user?.token]:null, fetcher,{revalidateOnFocus:false,})
  console.log(error)
   if(isValidating){
-      return <DashboardShell><SiteTableSkeleton/></DashboardShell> 
+      return <DashboardShell><SiteTableHeader/><SiteTableSkeleton/></DashboardShell> 
   }if(!data || error || data.message){
- return  <DashboardShell><EmptyState/></DashboardShell>
+ return  <DashboardShell><SiteTableHeader/><EmptyState/></DashboardShell>
   }else{
-    return <DashboardShell><SiteTable sites={data}/></DashboardShell>
+    return <DashboardShell><SiteTableHeader/><SiteTable sites={data}/></DashboardShell>
   }
    
   
