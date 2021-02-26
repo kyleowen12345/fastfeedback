@@ -40,7 +40,7 @@ const {id}=createSites(newSite)
     isClosable: true,
   })
   mutate(user ? ['/api/sites',user?.token]:null,async (data)=>{
-    return [...data,{id,...newSite}]
+    return [{id,...newSite},...data]
   },false)
   onClose()
     }
