@@ -96,18 +96,13 @@ export default function Home() {
          transform: 'scale(0.95)'
        }} onClick={(e)=>auth.signinWithGoogle()}>Sign In with Google</Button>
        <Button 
-       leftIcon={<Icon >
-       <path
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-       />
+       leftIcon={<Icon viewBox="5 20 291.319 291.319">
+       <path d="M145.659 0c80.45 0 145.66 65.219 145.66 145.66 0 80.45-65.21 145.659-145.66 145.659S0 226.109 0 145.66C0 65.219 65.21 0 145.659 0z" fill="#3b5998"/>
+  <path d="M163.394 100.277h18.772v-27.73h-22.067v.1c-26.738.947-32.218 15.977-32.701 31.763h-.055v13.847h-18.207v27.156h18.207v72.793h27.439v-72.793h22.477l4.342-27.156h-26.81v-8.366c0-5.335 3.55-9.614 8.603-9.614z" fill="#fff"/>
      </Icon>}
-       backgroundColor="gray.900"
-       color="white"
+      backgroundColor="white"
+      color="gray.900"
+      variant="outline"
        fontWeight="medium"
        mt={4}
        maxW="200px"
@@ -115,7 +110,7 @@ export default function Home() {
        _active={{
          bg: 'gray.800',
          transform: 'scale(0.95)'
-       }} onClick={(e)=>auth.signinFaceBook()}>Sign In with FaceBook</Button>
+       }} onClick={(e)=>auth.signinFaceBook()}>Sign with Facebook</Button>
        </>}
        </Flex>
   )
