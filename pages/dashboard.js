@@ -12,10 +12,10 @@ import SiteTableHeader from '@/components/SiteTableHeader'
 export default function Dashboard() {
   const {user}=useAuth()
   const { data, error,isValidating } = useSWR(user ? ['/api/sites',user?.token]:null, fetcher,{revalidateOnFocus:false,})
- console.log(error)
+ console.log(data)
   if(isValidating){
       return <DashboardShell><SiteTableHeader/><SiteTableSkeleton/></DashboardShell> 
-  }if(!data || error || data.message){
+  }if(!data || error || data.message || data.length==0){
  return  <DashboardShell><SiteTableHeader/><EmptyState/></DashboardShell>
   }else{
     return <DashboardShell><SiteTableHeader/><SiteTable sites={data}/></DashboardShell>

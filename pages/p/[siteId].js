@@ -24,7 +24,7 @@ export async function getStaticProps({params}) {
     }))
     return {
       paths,
-      fallback:  false // See the "fallback" section below
+      fallback:  true // See the "fallback" section below
     };
   }
   // The page
@@ -44,6 +44,7 @@ export default function SiteFeedBack({initialFeedback}) {
      provider:auth?.user.provider || auth?.user.providerData[0].providerId,
      status:"pending"
   }
+  inputEl.current.value=""
   setAllFeedBack([newFeedback, ...allFeedBack])
   createFeedback(newFeedback)
   }
@@ -52,11 +53,11 @@ export default function SiteFeedBack({initialFeedback}) {
       <FormControl id="email" my={8}>
   <FormLabel htmlFor="comment">Comment</FormLabel>
   <Input ref={inputEl} type="comment" id="comment" />
-  <Button type="submit" fontWeight="medium" mt={2}>Submit</Button>
+  <Button type="submit" fontWeight="medium" mt={2} isDisabled={router.isFallback}>Submit</Button>
 </FormControl>
       </Box>
         
-{allFeedBack.map(i=>(
+{allFeedBack && allFeedBack.map(i=>(
         <FeedBack key={i.createdAt} {...i}/>
     ))}
     </Box>
