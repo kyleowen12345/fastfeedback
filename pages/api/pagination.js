@@ -20,7 +20,6 @@ startAtRes.forEach(doc=>{
   })
  
 res.status(200).json(sites)
-  console.log(last)
   } catch (error) {
     console.log('Error getting document',error)
   }
