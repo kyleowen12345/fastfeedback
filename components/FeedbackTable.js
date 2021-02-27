@@ -14,7 +14,7 @@ import { Table, Tr, Th, Td } from './Table';
 import DeleteButton from './DeleteButton';
 
 const FeedbackTable = ({feedback}) => {
-  console.log(feedback)
+
   return (
     <Table>
       <thead>

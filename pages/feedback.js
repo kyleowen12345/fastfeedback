@@ -6,12 +6,13 @@ import useSWR from 'swr'
 import fetcher from '@/utils/fetcher'
 import FeedbackTable from '@/components/FeedbackTable'
 import FeedbackTableHeader from '@/components/FeedbackTableHeader'
+import Page from '@/components/Page';
 
 
-export default function MyFeedback() {
+function MyFeedback() {
   const {user}=useAuth()
   const { data, error,isValidating } = useSWR(user ? ['/api/feedback',user?.token]:null, fetcher,{revalidateOnFocus:false,})
- console.log(data)
+
   if(isValidating){
       return <DashboardShell><FeedbackTableHeader/><SiteTableSkeleton/></DashboardShell> 
   }if(!data || error || data.message){
@@ -23,4 +24,10 @@ export default function MyFeedback() {
   
   
 }
+const MyFeedbackPage = () => (
+  <Page name="Feedback" path="/feedback">
+    <MyFeedback />
+  </Page>
+);
+export default MyFeedbackPage
 

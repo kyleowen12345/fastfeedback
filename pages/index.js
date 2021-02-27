@@ -11,7 +11,7 @@ import Link from 'next/link'
 export default function Home() {
 
   const auth=useAuth()
-  console.log(auth?.user)
+ 
   return (
     <Flex as="main" direction="column" align="center" justify="center" h="100vh">
        <Head>
