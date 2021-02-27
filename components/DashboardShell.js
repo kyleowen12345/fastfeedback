@@ -14,7 +14,9 @@ import { useAuth } from '@/lib/auth'
 import NextLink from 'next/link'
 const DashboardShell = ({children}) => {
    const {user,signout}=useAuth()
-   return <Flex flexDirection="column">
+   return ( 
+     <>
+   <Flex flexDirection="column">
       <Flex
         justifyContent="space-between"
         alignItems="center"
@@ -25,6 +27,7 @@ const DashboardShell = ({children}) => {
         <Icon as={GoogleIcon} w="10" h="10" />
          <NextLink href="/dashboard" passHref>Sites</NextLink>
          <NextLink href="/feedback" passHref>Feedback</NextLink>
+         <NextLink href="/account" passHref>Account</NextLink>
         </Stack>
         <Flex justifyContent="center" alignItems="center">
           {user && <Button variant="ghost" mr={2} onClick={()=>signout()}>Log Out</Button>}
@@ -45,7 +48,8 @@ const DashboardShell = ({children}) => {
         </Flex>
       </Flex>
     </Flex>
-
+    </>
+   )
 }
 
 export default DashboardShell

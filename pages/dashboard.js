@@ -7,18 +7,23 @@ import useSWR from 'swr'
 import fetcher from '@/utils/fetcher'
 import SiteTable from '@/components/SiteTable'
 import SiteTableHeader from '@/components/SiteTableHeader'
+import UpgradeEmptyState from '@/components/UpgradeEmptyState'
 
 
 export default function Dashboard() {
   const {user}=useAuth()
   const { data, error,isValidating } = useSWR(user ? ['/api/sites',user?.token]:null, fetcher,{revalidateOnFocus:false,})
- console.log(data)
-  if(isValidating){
+
+  if(!data){
       return <DashboardShell><SiteTableHeader/><SiteTableSkeleton/></DashboardShell> 
-  }if(!data || error || data.message || data.length==0){
- return  <DashboardShell><SiteTableHeader/><EmptyState/></DashboardShell>
-  }else{
-    return <DashboardShell><SiteTableHeader/><SiteTable sites={data}/></DashboardShell>
+  }if(!data.length){
+ return  <DashboardShell><SiteTableHeader/><SiteTable sites={data}/></DashboardShell>  
+}else{
+    return <DashboardShell>
+      <SiteTableHeader isPaidAccount={user?.stripeRole}/>
+{user?.stripeRole ? <EmptyState/>:<UpgradeEmptyState/>}
+    
+    </DashboardShell>
   }
    
   
